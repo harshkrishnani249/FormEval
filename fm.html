@@ -200,7 +200,7 @@
       <th>Will you recommend us</th>
     </tr>
   </table>
-
+ 
   <script type="text/javascript">
 
     document.getElementById("submit").onclick = function () {
@@ -234,9 +234,9 @@
       title.innerHTML = document.getElementById("title").value;
       feedback.innerHTML = document.getElementById("feedback").value;
       suggestion.innerHTML = document.getElementById("suggestion").value;
-      // pica.innerHTML = document.getElementsByName("checktry")[0].checked;
+      
       var markedCheckbox = document.getElementsByName('checktry');
-      // console.log(markedCheckbox);
+      
       for (let checkbox of markedCheckbox) {
         if (checkbox.checked)
         {
@@ -244,17 +244,8 @@
         }
           
       }
-      // var checkbx=document.querySelectorAll("input[type=checkbox]:checked");
-      // var checkbxvalue="";
-      // for (let i = 0; i < array.length; i++) {
-      //   checkbxvalue+=checkbx[i].value+" ";
-      // }
-      // markedCheckbox.innerHTML=checkbxvalue;
-
 
       return false;
     }
-
-
 
   </script>
