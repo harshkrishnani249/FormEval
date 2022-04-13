@@ -78,3 +78,12 @@
 #lname {
   outline: none;
 }
+.true {
+  align-items: center;
+  margin: 0 auto;
+  width: fit-content;
+  background-color: white;
+}
+th {
+  padding: 14px;
+}
