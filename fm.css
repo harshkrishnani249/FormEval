@@ -78,3 +78,24 @@
 #lname {
   outline: none;
 }
+.true {
+  align-items: center;
+  margin: 0 auto;
+  width: fit-content;
+  background-color: white;
+}
+th {
+  padding: 10px;
+}
+.delete {
+  margin: 18px;
+  margin-left: 17%;
+}
+.edit {
+  margin: 30px;
+  margin-left: 3%;
+}
+.doc {
+  margin: 18px;
+  margin-left: 23%;
+}

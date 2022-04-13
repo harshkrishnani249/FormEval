@@ -24,7 +24,7 @@
 
     <h1 class="a1">Customers Details</h1>
     <hr>
-    <form class="formstyling" onsubmit="return validation()">
+    <form class="formstyling" id="my_form" onsubmit="return validation()">
       <div class="b1">
 
         <div>
@@ -115,9 +115,9 @@
           <br>
           <select id="title">
             <option value="select something">Select One</option>
-            <option value="1">Newspaper</option>
-            <option value="2">Magzine</option>
-            <option value="3">Social media</option>
+            <option value="Newspaper">Newspaper</option>
+            <option value="Magzine">Magzine</option>
+            <option value="Social media">Social media</option>
           </select>
           <br>
           <br>
@@ -150,8 +150,9 @@
           <span id="suggestionerror" class="text-danger font-weight-bold"></span>
         </div>
         <h2>Will you be willing to recommend Us</h2>
-        <input type="checkbox" id="yes">Yes
-        <input type="checkbox" id="no">No
+
+        <input type="checkbox" name="checktry" id="mycheck1" value="yes">Yes
+        <input type="checkbox" name="checktry" id="mycheck2" value="no">No
         <br><br>
         <br>
         <br>
@@ -177,7 +178,109 @@
           </tr>
         </table>
         <br>
-        <div class="s1"> <button type="submit" value="Submit" class="z1">Submit</button></div>
+        <div class="s1"> <button type="submit" value="Submit" class="z1" id="submit">Submit</button></div>
       </div>
     </form>
   </div>
+
+  <table id="tablenew" class="true">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Street</th>
+      <th>Street2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Pincode</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>How did you hear about us</th>
+      <th>Feedback</th>
+      <th>Suggestion</th>
+      <th>Will you recommend us</th>
+      <th>Delete record</th>
+      <th>Edit record</th>
+    </tr>
+  </table>
+
+
+  <script type="text/javascript">
+
+    document.getElementById("submit").onclick = function () {
+      document.getElementById("tablenew").style.display = "block";
+
+      var table = document.getElementById("tablenew");
+      var row = table.insertRow(-1);
+      var fname = row.insertCell(0);
+      var lname = row.insertCell(1);
+      var add = row.insertCell(2);
+      var add2 = row.insertCell(3);
+      var City = row.insertCell(4);
+      var state = row.insertCell(5);
+      var PC = row.insertCell(6);
+      var phone = row.insertCell(7);
+      var email = row.insertCell(8);
+      var title = row.insertCell(9);
+      var feedback = row.insertCell(10);
+      var suggestion = row.insertCell(11);
+      var checkvalue = row.insertCell(12);
+      var put = row.insertCell(13);
+      var set = row.insertCell(14);
+
+      fname.innerHTML = document.getElementById("fname").value;
+      lname.innerHTML = document.getElementById("lname").value;
+      add.innerHTML = document.getElementById("add").value;
+      add2.innerHTML = document.getElementById("add2").value;
+      City.innerHTML = document.getElementById("City").value;
+      state.innerHTML = document.getElementById("state").value;
+      PC.innerHTML = document.getElementById("PC").value;
+      phone.innerHTML = document.getElementById("phone").value;
+      email.innerHTML = document.getElementById("email").value;
+      title.innerHTML = document.getElementById("title").value;
+      feedback.innerHTML = document.getElementById("feedback").value;
+      suggestion.innerHTML = document.getElementById("suggestion").value;
+      put.innerHTML = ' <button  onClick="onDelete(this)" class="delete" id="del">Delete</button>';
+      set.innerHTML = ' <button  onClick="onEdit(this)" class="doc" id="doctor">Edit</button>';
+
+      var markedCheckbox = document.getElementsByName('checktry');
+
+      for (let checkbox of markedCheckbox) {
+        if (checkbox.checked) {
+          checkvalue.innerHTML += checkbox.value + ' ';
+        }
+
+      }
+
+      return false;
+    }
+    //function myDeleteFunction() {
+    //      document.getElementById("tablenew").deleteRow(1);
+    //}
+
+    function onDelete(td) {
+      row = td.parentElement.parentElement;
+      document.getElementById("tablenew").deleteRow(row.rowIndex);
+
+    }
+
+
+    function onEdit(td) {
+      selectedRow = td.parentElement.parentElement;
+      document.getElementById("fname").value = selectedRow.cells[0].innerHTML;
+      document.getElementById("lname").value = selectedRow.cells[1].innerHTML;
+      document.getElementById("add").value = selectedRow.cells[2].innerHTML;
+      document.getElementById("add2").value = selectedRow.cells[3].innerHTML;
+      document.getElementById("City").value = selectedRow.cells[4].innerHTML;
+      document.getElementById("state").value = selectedRow.cells[5].innerHTML;
+      document.getElementById("PC").value = selectedRow.cells[6].innerHTML;
+      document.getElementById("phone").value = selectedRow.cells[7].innerHTML;
+      document.getElementById("email").value = selectedRow.cells[8].innerHTML;
+      document.querySelector("select").value = selectedRow.cells[9].innerHTML;
+      document.getElementById("feedback").value = selectedRow.cells[10].innerHTML;
+      document.getElementById("suggestion").value = selectedRow.cells[11].innerHTML;
+      document.getElementsByName("checktry").value = selectedRow.cells[12].innerHTML;
+      onDelete(td);
+
+    }
+
+  </script>
