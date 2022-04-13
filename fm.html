@@ -198,9 +198,12 @@
       <th>Feedback</th>
       <th>Suggestion</th>
       <th>Will you recommend us</th>
+      <th>Delete record</th>
+      <th>Edit record</th>
     </tr>
   </table>
- 
+
+
   <script type="text/javascript">
 
     document.getElementById("submit").onclick = function () {
@@ -221,6 +224,8 @@
       var feedback = row.insertCell(10);
       var suggestion = row.insertCell(11);
       var checkvalue = row.insertCell(12);
+      var put = row.insertCell(13);
+      var set = row.insertCell(14);
 
       fname.innerHTML = document.getElementById("fname").value;
       lname.innerHTML = document.getElementById("lname").value;
@@ -234,18 +239,48 @@
       title.innerHTML = document.getElementById("title").value;
       feedback.innerHTML = document.getElementById("feedback").value;
       suggestion.innerHTML = document.getElementById("suggestion").value;
-      
+      put.innerHTML = ' <button  onClick="onDelete(this)" class="delete" id="del">Delete</button>';
+      set.innerHTML = ' <button  onClick="onEdit(this)" class="doc" id="doctor">Edit</button>';
+
       var markedCheckbox = document.getElementsByName('checktry');
-      
+
       for (let checkbox of markedCheckbox) {
-        if (checkbox.checked)
-        {
-          checkvalue.innerHTML+= checkbox.value + ' ';
+        if (checkbox.checked) {
+          checkvalue.innerHTML += checkbox.value + ' ';
         }
-          
+
       }
 
       return false;
+    }
+    //function myDeleteFunction() {
+    //      document.getElementById("tablenew").deleteRow(1);
+    //}
+
+    function onDelete(td) {
+      row = td.parentElement.parentElement;
+      document.getElementById("tablenew").deleteRow(row.rowIndex);
+
+    }
+
+
+    function onEdit(td) {
+      selectedRow = td.parentElement.parentElement;
+      document.getElementById("fname").value = selectedRow.cells[0].innerHTML;
+      document.getElementById("lname").value = selectedRow.cells[1].innerHTML;
+      document.getElementById("add").value = selectedRow.cells[2].innerHTML;
+      document.getElementById("add2").value = selectedRow.cells[3].innerHTML;
+      document.getElementById("City").value = selectedRow.cells[4].innerHTML;
+      document.getElementById("state").value = selectedRow.cells[5].innerHTML;
+      document.getElementById("PC").value = selectedRow.cells[6].innerHTML;
+      document.getElementById("phone").value = selectedRow.cells[7].innerHTML;
+      document.getElementById("email").value = selectedRow.cells[8].innerHTML;
+      document.querySelector("select").value = selectedRow.cells[9].innerHTML;
+      document.getElementById("feedback").value = selectedRow.cells[10].innerHTML;
+      document.getElementById("suggestion").value = selectedRow.cells[11].innerHTML;
+      document.getElementsByName("checktry").value = selectedRow.cells[12].innerHTML;
+      onDelete(td);
+
     }
 
   </script>
